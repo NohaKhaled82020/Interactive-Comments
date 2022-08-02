@@ -1,11 +1,11 @@
 # Interactive Comments
 
 My challenge is to build out this interactive comments section and get it looking as close to the design as possible.
-(./design/desktop-preview.jpg)
+![Design preview for the Interactive comments section coding challenge](./design/desktop-preview.jpg)
 
 Challenge Link :
 
-https://www.frontendmentor.io/challenges/interactive-rating-component-koxpeBUmI
+https://www.frontendmentor.io/challenges/interactive-comments-section-iG1RugEG9
 
 ## 💫 Live Demo
 
