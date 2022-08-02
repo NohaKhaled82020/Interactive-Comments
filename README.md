@@ -1,6 +1,7 @@
 # Interactive Comments
 
 My challenge is to build out this interactive comments section and get it looking as close to the design as possible.
+
 ![Design preview for the Interactive comments section coding challenge](./src/assets/images/desktop-preview.jpg)
 
 Challenge Link :
