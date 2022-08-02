@@ -1,0 +1,104 @@
+<div class="comment">
+  <div class="comment__action">
+    <button
+      class="btn btn-action"
+      [disabled]="
+        (userService.currentUser$ | async).userName === comment.user.userName
+      "
+      (click)="like()"
+    >
+      <svg viewBox="0 0 11 11">
+        <use xlink:href="assets/images/sprite.svg#icon-plus"></use>
+      </svg>
+    </button>
+    <p>{{ comment.score }}</p>
+    <button
+      class="btn"
+      [disabled]="
+        (userService.currentUser$ | async).userName === comment.user.userName
+      "
+      (click)="disLiked()"
+    >
+      <svg viewBox="0 0 11 13">
+        <use xlink:href="assets/images/sprite.svg#icon-minus"></use>
+      </svg>
+    </button>
+  </div>
+  <div class="comment__content">
+    <div class="comment__title">
+      <img [src]="comment.user.imgSrc" alt="" />
+      <h1>{{ comment.user.userName }}</h1>
+      <span
+        *ngIf="
+          (userService.currentUser$ | async).userName === comment.user.userName
+        "
+        >You</span
+      >
+      <p>{{ comment.createdAt | DynamicDate }}</p>
+
+      <div class="btns-group">
+        <button
+          class="btn btn-link"
+          (click)="showBox()"
+          *ngIf="
+            (userService.currentUser$ | async).userName !==
+            comment.user.userName
+          "
+        >
+          <svg viewBox="0 0 14 13">
+            <use xlink:href="assets/images/sprite.svg#icon-reply"></use>
+          </svg>
+          Reply
+        </button>
+        <ng-container
+          *ngIf="
+            (userService.currentUser$ | async).userName ===
+            comment.user.userName
+          "
+        >
+          <button class="btn btn-link btn-red" (click)="deleteComment()">
+            <svg viewBox="0 0 12 14">
+              <use xlink:href="assets/images/sprite.svg#icon-delete"></use>
+            </svg>
+            Delete
+          </button>
+          <button class="btn btn-link" (click)="showEditBox()">
+            <svg viewBox="0 0 14 14">
+              <use xlink:href="assets/images/sprite.svg#icon-edit"></use>
+            </svg>
+            Edit
+          </button>
+        </ng-container>
+      </div>
+    </div>
+    <p *ngIf="!showEdit">
+      <span
+        [style.color]="
+          comment.content.startsWith('@') ? 'hsl(238, 40%, 52%)' : 'inherit'
+        "
+      >
+        {{ comment.content.split(" ")[0] }}
+      </span>
+      {{ comment.content.split(" ").slice(1).join(" ") }}
+    </p>
+    <ng-container *ngIf="showEdit">
+      <form #editCommentForm="ngForm" (submit)="editComment(editCommentForm)">
+        <textarea
+          placeholder="Add a comment..."
+          class="form-control"
+          [(ngModel)]="commentText"
+          name="commentText"
+          (keyup.enter)="editComment(editCommentForm)"
+          required
+        ></textarea>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="!editCommentForm.valid"
+        >
+          Update
+        </button>
+      </form>
+    </ng-container>
+  </div>
+</div>

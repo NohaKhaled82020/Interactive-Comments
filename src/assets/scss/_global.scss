@@ -1,0 +1,63 @@
+body {
+  font-family: "Rubik", sans-serif;
+  background-color: $lightGray;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 500;
+  margin: 0;
+  color: $darkBlue;
+}
+p {
+  margin: 0;
+  color: $grayishBlue;
+}
+
+a,
+input,
+button,
+select {
+  transition: 0.3s;
+}
+
+.global-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  .main-content {
+    flex: 1;
+  }
+}
+
+.container {
+  width: 100% !important;
+  max-width: 1200px !important;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px $mainColor !important;
+  border-radius: 20px;
+  padding-right: 40px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $mainColor !important;
+  border-radius: 20px;
+  padding-right: 40px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $mainColor !important;
+}

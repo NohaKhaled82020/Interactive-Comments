@@ -1,0 +1,22 @@
+<ng-container *ngIf="userService.currentUser$ | async as myInfo">
+  <div class="comment add-comment">
+    <img [src]="myInfo.imgSrc" alt="person photo" />
+    <form #addCommentForm="ngForm" (submit)="addComm(addCommentForm, myInfo)">
+      <textarea
+        placeholder="Add a comment..."
+        class="form-control"
+        [(ngModel)]="commentText"
+        name="commentText"
+        (keyup.enter)="addComm(addCommentForm, myInfo)"
+        required
+      ></textarea>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="!addCommentForm.valid"
+      >
+        {{ comment?.id ? "REPLY" : "SEND" }}
+      </button>
+    </form>
+  </div>
+</ng-container>

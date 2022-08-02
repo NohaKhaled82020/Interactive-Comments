@@ -1,0 +1,37 @@
+<div class="home">
+  <div class="container">
+    <div class="page">
+      <ng-container *ngFor="let comment of comments; index as i">
+        <app-comment [comment]="comment" [commentIndex]="i"></app-comment>
+        <app-add-comment
+          [comment]="comment"
+          [commentIndex]="i"
+          *ngIf="
+            (userService.showBox$ | async).show &&
+            (userService.showBox$ | async).id === comment.id
+          "
+        ></app-add-comment>
+
+        <div class="replys" *ngIf="comment.replies.length">
+          <ng-container *ngFor="let reply of comment.replies; index as j">
+            <app-comment [comment]="reply" [commentIndex]="i" [replyIndex]="j">
+            </app-comment>
+            <app-add-comment
+              [comment]="reply"
+              [commentIndex]="i"
+              [replyIndex]="j"
+              *ngIf="
+                (userService.showBox$ | async).show &&
+                (userService.showBox$ | async).id === reply.id &&
+                reply.user.userName !==
+                  (userService.currentUser$ | async).userName
+              "
+            ></app-add-comment>
+          </ng-container>
+        </div>
+      </ng-container>
+
+      <app-add-comment></app-add-comment>
+    </div>
+  </div>
+</div>

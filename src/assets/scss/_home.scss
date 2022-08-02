@@ -1,0 +1,121 @@
+.home {
+  width: 100%;
+  padding: 60px 0;
+  margin: 0 auto;
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.page {
+  max-width: 700px;
+  @include maxBreakpoint($mobilexLarge) {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+.comment {
+  position: relative;
+  padding: 20px;
+  border-radius: 10px;
+  border: none;
+  background-color: $white;
+  display: flex;
+  margin-bottom: 20px;
+
+  @include maxBreakpoint($mobilexLarge) {
+    flex-direction: column-reverse;
+  }
+}
+.comment__content {
+  width: 100%;
+}
+.comment__action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $lightGray;
+  height: fit-content;
+  width: fit-content;
+  border-radius: 10px;
+  margin-right: 25px;
+  .btn {
+    padding: 0 12px;
+    height: 35px;
+  }
+  p {
+    color: $mainColor;
+  }
+  svg {
+    width: 11px;
+    height: 11px;
+    fill: $mainColor;
+  }
+  @include maxBreakpoint($mobilexLarge) {
+    margin-right: 0;
+    margin-top: 25px;
+    flex-direction: row;
+  }
+}
+.comment__title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  img {
+    max-width: 40px;
+    height: 40px;
+    object-fit: cover;
+  }
+  h1 {
+    font-size: 16px;
+    margin: 0 10px;
+  }
+  span {
+    margin-right: 15px;
+    background-color: $mainColor;
+    padding: 0 7px;
+    color: $white;
+    font-size: 14px;
+    border-radius: 3px;
+  }
+  svg {
+    width: 15px;
+    height: 15px;
+    margin-inline-end: 7px;
+  }
+  p {
+    margin-right: auto;
+  }
+}
+.add-comment {
+  width: 100%;
+  position: relative;
+  img {
+    max-width: 40px;
+    height: 40px;
+    object-fit: cover;
+    @include maxBreakpoint($mobilexLarge) {
+      margin-top: 20px;
+    }
+  }
+  .btn {
+    @include maxBreakpoint($mobilexLarge) {
+      position: absolute;
+      bottom: 17px;
+      right: 20px;
+    }
+  }
+}
+.replys {
+  margin-left: 30px;
+  padding-left: 30px;
+  border-left: 2px solid rgba($color: $grayishBlue, $alpha: 0.15);
+  .comment {
+    max-width: 100%;
+  }
+  @include maxBreakpoint($mobilexLarge) {
+    margin-left: 0;
+    padding-left: 15px;
+  }
+}

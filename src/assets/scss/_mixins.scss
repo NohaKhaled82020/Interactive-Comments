@@ -1,0 +1,32 @@
+//responsive mixins
+@mixin minBreakpoint($size) {
+  @media screen and (min-width: $size) {
+    @content;
+  }
+}
+@mixin maxBreakpoint($size) {
+  @media screen and (max-width: $size) {
+    @content;
+  }
+}
+
+//other mixins
+@mixin btnColors($bgColor, $color) {
+  background-color: $bgColor;
+  border-color: $bgColor;
+  color: $color;
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: darken($color: $bgColor, $amount: 10) !important;
+    border-color: darken($color: $bgColor, $amount: 10) !important;
+  }
+  &.btn-outline {
+    color: $bgColor;
+    border: 2px solid $bgColor;
+    &:hover {
+      background-color: $bgColor;
+      color: $color;
+    }
+  }
+}
